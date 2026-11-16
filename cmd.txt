@@ -1,0 +1,111 @@
+### **1. Open project**
+
+```
+cd C:\Users\acer\Downloads\demo
+```
+
+### **2. Check Java**
+
+```
+java -version
+```
+
+### **3. Check Maven**
+
+```
+.\mvnw.cmd -version
+```
+
+### **4. Build project**
+
+```
+.\mvnw.cmd clean package -DskipTests
+```
+
+### **5. Run Spring Boot**
+
+```
+.\mvnw.cmd spring-boot:run
+```
+
+### **6. Check port 8080**
+
+```
+netstat -ano | findstr :8080
+```
+
+### **7. Connect MySQL**
+
+```
+& "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
+```
+
+### **8. MySQL commands**
+
+```
+SHOW DATABASES;
+```
+
+```
+USE SimPortal;
+```
+
+```
+SHOW TABLES;
+```
+
+```
+SELECT * FROM SimDetails;
+```
+
+### **9. Insert 3 SIM records**
+
+```
+INSERT INTO SimDetails (serviceNumber, simNumber, simStatus)
+VALUES
+('9876543211', 'SIM1002', 'active'),
+('9876543212', 'SIM1003', 'inactive'),
+('9876543213', 'SIM1004', 'active');
+```
+
+### **10. Verify records**
+
+```
+SELECT * FROM SimDetails;
+```
+
+### **11. Exit MySQL**
+
+```
+EXIT;
+```
+
+### **12. API – SIM 1001**
+
+```
+Invoke-RestMethod -Uri "http://localhost:8080/api/v1/activation/sim/verify?simNumber=SIM1001&serviceNumber=9876543210" -Method Post | ConvertTo-Json -Depth 10
+```
+
+### **13. API – SIM 1002**
+
+```
+Invoke-RestMethod -Uri "http://localhost:8080/api/v1/activation/sim/verify?simNumber=SIM1002&serviceNumber=9876543211" -Method Post | ConvertTo-Json -Depth 10
+```
+
+### **14. API – SIM 1003**
+
+```
+Invoke-RestMethod -Uri "http://localhost:8080/api/v1/activation/sim/verify?simNumber=SIM1003&serviceNumber=9876543212" -Method Post | ConvertTo-Json -Depth 10
+```
+
+### **15. API – SIM 1004**
+
+```
+Invoke-RestMethod -Uri "http://localhost:8080/api/v1/activation/sim/verify?simNumber=SIM1004&serviceNumber=9876543213" -Method Post | ConvertTo-Json -Depth 10
+```
+
+### **16. Stop application**
+
+```
+Ctrl + C
+```
